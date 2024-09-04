@@ -1,0 +1,129 @@
+{% extends "locataire/base-index.html" %}
+{%load static%}
+{% block locataire %}
+<div class="content-body">
+    <div class="container-fluid">
+        <h2 class="text-center mb-4">Détails de la Réservation Payée</h2>
+    <div id="printableArea" class="card p-4">
+        <!-- Logo ajouté -->
+        <div class="text-center mb-4">
+            <img src="{% static 'assets/img/brand/logo-locapp.png' %}" alt="Logo" style="max-width: 150px;">
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <strong>Nom de l'appartement:</strong>
+            </div>
+            <div class="col-sm-6">
+                {{ reservation.appartement.nomAP }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <strong>Date début:</strong>
+            </div>
+            <div class="col-sm-6">
+                {{ reservation.date_debut }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <strong>Date fin:</strong>
+            </div>
+            <div class="col-sm-6">
+                {{ reservation.date_fin }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <strong>Statut:</strong>
+            </div>
+            <div class="col-sm-6">
+                {{ reservation.get_statut_display }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-6">
+                <strong>Frais:</strong>
+            </div>
+            <div class="col-sm-6">
+                {{ reservation.frais }} MRU
+            </div>
+        </div>
+    </div>
+    <div align= 'center'>
+    <button onclick="window.print()" class="btn btn-primary mt-3">Imprimer</button>
+    <a href="{% url 'locataire-reservation' %}" ><button class="btn btn-danger mt-3">Annuler</button></a>
+</div>
+</div>
+</div>
+
+<style>
+/* Styles pour l'impression */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printableArea, #printableArea * {
+        visibility: visible;
+    }
+    #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 10px;
+        box-shadow: none;
+        background: white;
+    }
+    .card {
+        border: none;
+        box-shadow: none;
+    }
+    .container {
+        width: 100%;
+    }
+    .row {
+        margin-bottom: 10px;
+    }
+    strong {
+        display: inline-block;
+        min-width: 150px;
+    }
+    .btn-primary,.btn-danger {
+        display: none;
+    }
+}
+
+/* Styles généraux */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 150px;
+}
+
+.btn-primary ,.btn-danger{
+    {% comment %} background-color: #007bff; {% endcomment %}
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,285 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modifier un locataire </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'b/images/ico.png'%}">
+    <link rel="stylesheet" href="{%static 'b/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'%}">
+    <link rel="stylesheet" href="{%static 'b/css/style.css'%}">
+	
+	<!-- Pick date -->
+    <link rel="stylesheet" href="{%static 'b/vendor/pickadate/themes/default.css'%}">
+    <link rel="stylesheet" href="{%static 'b/vendor/pickadate/themes/default.date.css'%}">
+
+</head>
+
+<body>
+
+    	<!--Nav header start -->
+		{% include "adm/navheader.html" %}
+
+
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        {% include "adm/sidebar.html" %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+		
+		
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Locataire</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{%url 'adm-index'%}">Accueil</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Locataire</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Modifier locataire</a></li>
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Infos</h5>
+							</div>
+							<div class="card-body">
+                                <div class="text-center text-muted mb-4">
+
+                                    {% if msg %}
+                                      <small>{{ msg | safe }}</small>
+                                    {% else %}
+                                      Add your credentials
+                                    {% endif %}  
+                                  
+                                  </div>
+                    
+                                  {% if not success %}
+                                    <form  method="POST"  autocomplete="off">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">First Name </label>
+
+
+                                                    {{form.first_name}}
+                                                    
+                                                        {% if form.first_name.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.first_name.errors}}
+                                                            </div>
+                                                        {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Last Name </label>
+
+                                                     {{form.last_name}}
+
+                                                        {% if form.last_name.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.last_name.errors}}
+                                                            </div>
+                                                        {% endif %}
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Username </label>
+
+                                                    {{form.username}}
+
+                                                        {% if form.username.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.username.errors}}
+                                                            </div>
+                                                        {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Email </label>
+
+                                                    {{form.email}}
+
+                                                        {% if form.email.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.email.errors}}
+                                                            </div>
+                                                        {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Registration Date</label>
+
+                                                    {{form.date_joined}}
+
+                                                        {% if form.date_joined.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.date_joined.errors}}
+                                                            </div>
+                                                        {% endif %}
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Mobile Number </label>
+                                                    
+                                                    {{form.telephone}}
+
+                                                        {% if form.telephone.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.telephone.errors}}
+                                                            </div>
+                                                        {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Password </label>
+
+                                                    {{form.password1}}
+
+                                                        {% if form.password1.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.password1.errors}}
+                                                            </div>
+                                                        {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Confirm Password </label>
+
+                                                    {{form.password2}}
+
+                                                        {% if form.password2.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.password2.errors}}
+                                                            </div>
+                                                         {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Adresse </label>
+
+
+                                                    {{form.adresse}}
+
+                                                        {% if form.adresse.errors %}
+                                                            <div class="alert alert-danger">
+                                                                {{form.adresse.errors}}
+                                                            </div>
+                                                        {% endif %}
+                                                </div>
+                                            </div>
+                                            
+                                            {% comment %} <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="form-group fallback w-100">
+                                                    <input type="file" class="dropify" data-default-file="">
+                                                </div>
+                                            </div> {% endcomment %}
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <button type="submit" class="btn btn-primary">Modifier</button>
+                                                <button type="button" class="btn btn-light" onclick="window.history.back()">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        {% include "adm/footer.html" %}
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+<script src="{%static 'b/vendor/global/global.min.js'%}"></script>
+	<script src="{%static 'b/vendor/bootstrap-select/dist/js/bootstrap-select.min.js'%}"></script>
+    <script src="{%static 'b/js/custom.min.js'%}"></script>
+	<script src="{%static 'b/js/dlabnav-init.js'%}"></script>
+
+	<!-- Svganimation scripts -->
+    <script src="{%static 'b/vendor/svganimation/vivus.min.js'%}"></script>
+    <script src="{%static 'b/vendor/svganimation/svg.animation.js'%}"></script>
+    <script src="{%static 'b/js/styleSwitcher.js'%}"></script>
+	
+	<!-- pickdate -->
+    <script src="{%static 'b/vendor/pickadate/picker.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.time.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.date.js'%}"></script>
+	
+	<!-- Pickdate -->
+    <script src="{%static 'b/js/plugins-init/pickadate-init.js'%}"></script>
+	
+</body>
+</html>

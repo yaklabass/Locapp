@@ -1,0 +1,67 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+<style>
+    .content-body {
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: #007bff;
+        color: white;
+        border-bottom: none;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .list-group-item {
+        background-color: #f8f9fa;
+        border: none;
+    }
+    .list-group-item strong {
+        color: #007bff;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="content-body">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Réservation réussie</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-center">Merci pour votre réservation. Voici les détails de votre réservation :</p>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item"><strong>Appartement :</strong> {{ reservation.appartement.nomAP }}</li>
+                    <li class="list-group-item"><strong>Date de début :</strong> {{ reservation.date_debut }}</li>
+                    <li class="list-group-item"><strong>Jour de paiement :</strong> {{ reservation.jour_payement }}</li>
+                    <li class="list-group-item"><strong>Méthode de paiement :</strong> {{ reservation.get_methode_payement_display }}</li>
+                </ul>
+                <div class="mb-4">
+                    <h3>Conditions :</h3>
+                    <ul class="list-group list-group-flush">
+                        {% for condition in conditions %}
+                        <li class="list-group-item">{{ condition }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'locataire-reservation' %}" class="btn btn-primary">OK</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

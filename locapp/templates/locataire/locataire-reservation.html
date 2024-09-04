@@ -1,0 +1,91 @@
+{% extends "locataire/base-index.html" %}
+
+{% block locataire %}
+<div class="content-body">
+    <div class="container-fluid">
+        <h2>Mes Réservations</h2>
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Réservations par jour</h4>
+            </div>
+            <div class="card-body">
+                {% if reservations %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom de l'appartement</th>
+                            <th>Date début</th>
+                            <th>Date fin</th>
+                            <th>Statut</th>
+                            <th>Frais</th>
+                            <th>Détails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.appartement.nomAP }}</td>
+                            <td>{{ reservation.date_debut }}</td>
+                            <td>{{ reservation.date_fin }}</td>
+                            <td>{{ reservation.get_statut_display }}</td>
+                            <td>{{ reservation.frais }} MRU</td>
+                            <td>
+                                {% if reservation.statut == 'Success' %}
+                                <a href="{% url 'reservation-jour-confirme-detail' reservation.id %}" class="btn btn-info">Voir Détails</a>
+                                {% elif reservation.statut == 'Paid' %}
+                                <a href="{% url 'reservation-payee-detail' reservation.id %}" class="btn btn-info">Voir Détails</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Aucune réservation par jour confirmée ou annulée.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4 class="card-title">Réservations par mois</h4>
+            </div>
+            <div class="card-body">
+                {% if reservations_moi %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nom de l'appartement</th>
+                            <th>Date début</th>
+                            <th>Jour de paiement</th>
+                            <th>Statut</th>
+                            <th>Frais</th>
+                            <th>Détails</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reservation_moi in reservations_moi %}
+                        <tr>
+                            <td>{{ reservation_moi.appartement.nomAP }}</td>
+                            <td>{{ reservation_moi.date_debut }}</td>
+                            <td>{{ reservation_moi.jour_payement }}</td>
+                            <td>{{ reservation_moi.get_statut_display }}</td>
+                            <td>{{ reservation_moi.frais }} MRU</td>
+                            <td>
+                                {% if reservation_moi.statut == 'Confirmed' %}
+                                <a href="{% url 'reservation-moi-confirme-detail' reservation_moi.id %}" class="btn btn-info">Voir Détails</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>Aucune réservation par mois confirmée ou annulée.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

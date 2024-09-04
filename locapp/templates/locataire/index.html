@@ -1,0 +1,83 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+
+<!--**********************************
+        Content body start
+    ***********************************-->
+    
+    <div class="content-body">
+        <div class="text-center">
+            <h3>Bienvenue Dans LocAPP!</h3>
+            <br>
+            <a href="#" class="brand-logo">
+                <img class="logo-abbr" src="{% static 'assets/img/brand/logo-locapp.png' %}" alt="" width="500" height="150">
+            </a>
+            <br>
+            <h5>L'endroit idéal pour trouver un appartement!</h5>
+            <hr>
+            <br>
+            
+            
+            
+        </div>
+        <div class="container-fluid">
+            <h2>Liste des Appartements par Jour</h2>
+            <hr><br>
+            <div class="row">
+                {% for appartement in appartements_jour %}
+                <div class="col-md-4">
+                    <div class="card">
+                        {% if appartement.image %}
+                            <img src="{{ appartement.image.url }}" alt="{{ appartement.nomAP }}" style="width: 100%; height: 150px;">
+                        {% else %}
+                            N/A
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ appartement.nomAP }}</h5>
+                            <p class="card-text">{{ appartement.adresseAP }}</p>
+                            <a href="{% url 'detail-appartement' appartement.id %}" class="btn btn-info">Voir Détails</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'create-reservation' appartement.id %}" class="btn btn-primary">Réserver</a>
+                            {% else %}
+                                <a href="#" class="btn btn-primary" onclick="alert('Veuillez vous connecter pour réserver.');">Réserver</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <h2>Liste des Appartements par Mois</h2>
+            <hr><br>
+            <div class="row">
+                {% for appartement in appartements_mois %}
+                <div class="col-md-4">
+                    <div class="card">
+                        {% if appartement.image %}
+                            <img src="{{ appartement.image.url }}" alt="{{ appartement.nomAP }}" style="width: 100%; height: 150px;">
+                        {% else %}
+                            N/A
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ appartement.nomAP }}</h5>
+                            <p class="card-text">{{ appartement.adresseAP }}</p>
+                            <a href="{% url 'detail-appartement' appartement.id %}" class="btn btn-info">Voir Détails</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'create-reservation-moi' appartement.id %}" class="btn btn-primary">Réserver</a>
+                            {% else %}
+                                <a href="#" class="btn btn-primary" onclick="alert('Veuillez vous connecter pour réserver.');">Réserver</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+
+{% endblock %}

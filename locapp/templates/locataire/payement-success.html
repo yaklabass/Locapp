@@ -1,0 +1,31 @@
+{% extends "locataire/base-index.html" %}
+
+{% block locataire %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="alert alert-success custom-alert-success" role="alert">
+            <h4 class="alert-heading">Paiement réussi !</h4>
+            <p>Votre demande de paiement a été effectuée avec succès.</p>
+            <hr>
+            <!-- Icône sur une ligne indépendante -->
+            <div class="text-center">
+                <i class="fa fa-check-circle" style="font-size: 4em; color: #006400 !important;"></i>
+            </div>
+            <p class="text-center mt-3">Merci pour votre paiement.</p>
+            <!-- Bouton OK pour retourner à l'URL spécifiée -->
+            <div class="text-center mt-4">
+                <a href="{% url '' %}" class="btn btn-success" style="background-color: #28a745 !important; border-color: #28a745 !important;">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-alert-success {
+        background-color: #155724 !important; /* Vert foncé pour le fond */
+        border-color: #146c43 !important; /* Bordure plus foncée */
+        color: #ffffff; /* Texte en blanc pour un meilleur contraste */
+    }
+</style>
+
+{% endblock %}

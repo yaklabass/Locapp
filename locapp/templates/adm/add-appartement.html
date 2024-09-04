@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title> Ajout Appartements </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'b/images/ico.png'%}">
+    <link rel="stylesheet" href="{% static 'b/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'%}">
+	<!-- Datatable -->
+    <link href="{% static 'b/vendor/datatables/css/jquery.dataTables.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'b/css/style.css'%}">
+
+</head>
+
+<body>
+
+    {% include "adm/navheader.html" %}
+   
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+    {% include "adm/sidebar.html" %}
+       
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+		
+		
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Ajouter un Appartement</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'adm-index' %}">Accueil</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Appartements</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Ajouter un Appartement</a></li>
+                        </ol>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Nouveau Appartement</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" autocomplete = "off" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_nomAP">Nom de l'appartement</label>
+                                        {{ form.nomAP }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_telAP">Téléphone</label>
+                                        {{ form.telAP }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_adresseAP">Adresse</label>
+                                        {{ form.adresseAP }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_nb_chambres">Nombre de chambres</label>
+                                        {{ form.nb_chambres }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_nb_salles_bains">Nombre de salle de bains</label>
+                                        {{ form.nb_salles_bains }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_description">Description</label>
+                                        {{ form.description }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_Gerant">Proprietaire</label>
+                                        {{ form.Gerant }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_prix">Prix</label>
+                                        {{ form.prix }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_categorie">Catégorie</label>
+                                        {{ form.categorie }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_images">Images</label>
+                                        {{ form.image }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_images">Images</label>
+                                        {{ form.image1 }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_images">Images</label>
+                                        {{ form.image2 }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_images">Images</label>
+                                        {{ form.image3 }}
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                                	<button type="submit" class="btn btn-light" onclick="window.history.back()">Annuler</button>
+                                </form>
+                            </div>
+                            </div>
+								</form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+       {% include "adm/footer.html" %}
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		
+
+
+    </div>
+    <!--**********************************
+ 
+        Scripts
+    ***********************************-->
+	<!-- Required vendors -->
+    <script src="{%static 'b/vendor/global/global.min.js'%}"></script>
+	<script src="{%static 'b/vendor/bootstrap-select/dist/js/bootstrap-select.min.js'%}"></script>
+    <script src="{%static 'b/js/custom.min.js'%}"></script>
+    <script src="{%static 'b/js/dlabnav-init.js'%}"></script>	
+	
+	<!-- Svganimation scripts -->
+    <script src="{%static 'b/vendor/svganimation/vivus.min.js'%}"></script>
+    <script src="{%static 'b/vendor/svganimation/svg.animation.js'%}"></script>
+    <script src="{%static 'b/js/styleSwitcher.js'%}"></script>
+	
+	<!-- pickdate -->
+    <script src="{%static 'b/vendor/pickadate/picker.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.time.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.date.js'%}"></script>
+	
+	<!-- Pickdate -->
+    <script src="{%static 'b/js/plugins-init/pickadate-init.js'%}"></script>
+	
+</body>
+</html>

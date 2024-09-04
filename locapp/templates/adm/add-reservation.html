@@ -1,0 +1,28 @@
+{% extends "adm/base-index.html" %}
+
+{% block adm %}
+
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Ajouter une Réservation</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" autocomplete="off">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                            <button type="button" class="btn btn-light" onclick="window.history.back()">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

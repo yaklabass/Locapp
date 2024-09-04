@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modifier un gérant </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'b/images/ico.png'%}">
+    <link rel="stylesheet" href="{%static 'b/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'%}">
+	
+	<!-- Datatable -->
+    <link href="{%static 'b/vendor/datatables/css/jquery.dataTables.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'b/css/style.css'%}">
+
+</head>
+
+<body>
+
+    {% include "adm/navheader.html" %}
+   
+    
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+    {% include "adm/sidebar.html" %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+			
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Edit Professor</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="edit-professor.html">Gerant</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)"></a></li>
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Informations de base</h5>
+							</div>
+							<div class="card-body">
+                                <form action="#" method="post">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">First Name</label>
+												<input type="text" class="form-control" value="Harry">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Last Name</label>
+												<input type="text" class="form-control" value="Parker">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Email Here</label>
+												<input type="text" class="form-control" value="info@example.com">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Joining Date</label>
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker" value="20 August 2020">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Password</label>
+												<input type="password" class="form-control" value="jsandjn">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Confirm Password</label>
+												<input type="password" class="form-control" value="jsandjn">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Mobile Number</label>
+												<input type="text" class="form-control" value="+91 123 456 7890">
+											</div>
+										</div>
+	
+										
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Date of Birth</label>
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker1" value="20 August 2020">
+											</div>
+										</div>
+										
+										
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="button" class="btn btn-light" onclick="window.history.back()">Annuler</button>
+
+										</div>
+									</div>
+								</form>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2020</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+	<script src="{%static 'b/vendor/global/global.min.js'%}"></script>
+	<script src="{%static 'b/vendor/bootstrap-select/dist/js/bootstrap-select.min.js'%}"></script>
+    <script src="{%static 'b/js/custom.min.js'%}"></script>
+	<script src="{%static 'b/js/dlabnav-init.js'%}"></script>
+
+	<!-- Svganimation scripts -->
+    <script src="{%static 'b/vendor/svganimation/vivus.min.js'%}"></script>
+    <script src="{%static 'b/vendor/svganimation/svg.animation.js'%}"></script>
+    <script src="{%static 'b/js/styleSwitcher.js'%}"></script>
+	
+	<!-- pickdate -->
+    <script src="{%static 'b/vendor/pickadate/picker.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.time.js'%}"></script>
+    <script src="{%static 'b/vendor/pickadate/picker.date.js'%}"></script>
+	
+	<!-- Pickdate -->
+    <script src="{%static 'b/js/plugins-init/pickadate-init.js'%}"></script>
+	
+	
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+    <!--**********************************
+            Content body start
+        ***********************************-->
+        
+        <div class="content-body">
+    <div class="container-fluid">
+        <h2>Détails de l'Appartement</h2>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card mb-4">
+                    {% if appartement.image %}
+                    <img src="{{ appartement.image.url }}" class="card-img-top" alt="{{ appartement.nomAP }}">
+                    {% else %}
+                    <img src="{% static 'path/to/default-image.jpg' %}" class="card-img-top" alt="Pas d'image disponible">
+                    {% endif %}
+                </div>
+                
+                </div>
+            </div>
+            <div class="col-md-7">
+                {% if appartement.image1 %}
+                <div class="card mb-4">
+                    <img src="{{ appartement.image1.url }}" class="card-img-top" alt="Photo 1 de l'appartement">
+                </div>
+                {% endif %}
+                {% if appartement.image2 %}
+                <div class="card mb-4">
+                    <img src="{{ appartement.image2.url }}" class="card-img-top" alt="Photo 2 de l'appartement">
+                </div>
+                {% endif %}
+                {% if appartement.image3 %}
+                <div class="card mb-4">
+                    <img src="{{ appartement.image3.url }}" class="card-img-top" alt="Photo 3 de l'appartement">
+                </div>
+                {% endif %}
+
+                <div class="card-body">
+                    <h1 class="card-text">{{ appartement.nomAP }}</h1>
+                    <h3>Lieux: </h3>
+                    <p class="card-text">{{ appartement.adresseAP }}</p>
+
+                    <h5>Nb de chambre: {{ appartement.nb_chambres }} </h4>
+                    <h5>Nb salles bains: {{ appartement.nb_salles_bains }} </h4>
+
+                    <h4>Description: </h4>
+                    <p class="card-text">{{ appartement.description }}</p>
+                    <p class="card-text">Prix: {{ appartement.prix }} MRU</p>
+                </div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create-reservation' appartement.id%}" class="btn btn-primary">Réserver</a>
+                {% else %}
+                    <a href="#" class="btn btn-primary" onclick="alert('Veuillez vous connecter pour réserver.');">Réserver</a>
+                {% endif %}
+                <a href="{% url '' %}" class="btn btn-danger">Annuler</a>
+            </div>
+            <div class="card mb-4">
+                
+        </div>
+    </div>
+</div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+<style>
+    @media print {
+        .no-print {
+            display: none;
+        }
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+        body * {
+            visibility: hidden;
+        }
+        .print-section, .print-section * {
+            visibility: visible;
+        }
+        .print-section {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    }
+    .container {
+        max-width: 1000px; /* Agrandir la largeur de la container */
+        margin: 0 auto;
+        font-family: Arial, sans-serif;
+    }
+    .logo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .details {
+        margin-bottom: 30px;
+    }
+    .conditions {
+        margin-bottom: 30px;
+    }
+    .signatures {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    .signature {
+        width: 45%;
+        text-align: center;
+    }
+    .signature img {
+        max-width: 150px;
+    }
+    .condition-list {
+        list-style-type: disc; /* Utiliser des points pour les conditions */
+        margin-left: 20px;
+    }
+    /* Agrandir la taille de la div contenant les détails */
+    .card {
+        padding: 40px;
+        margin-bottom: 20px; /* Assurez-vous qu'il y a un espace entre la card et les boutons */
+    }
+    .details .row {
+        margin-bottom: 15px;
+    }
+    .details .col-sm-6 {
+        font-size: 16px;
+    }
+    .buttons {
+        display: flex;
+        justify-content: center; /* Centrer les boutons */
+        gap: 20px; /* Ajouter un espace entre les boutons */
+        margin-bottom: 20px; /* Ajouter un espace entre les boutons et le footer */
+    }
+</style>
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="print-section">
+            <h2 class="text-center mb-4">Détails de la Réservation</h2>
+            <div class="card p-4">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="{% static 'assets/img/brand/logo-locapp.png' %}" alt="Logo" style="max-width: 150px;">
+                </div>
+
+                <!-- Détails de la Réservation -->
+                <div class="details">
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <strong>Nom de l'appartement:</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ reservation.appartement.nomAP }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <strong>Date début:</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ reservation.date_debut }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <strong>Jour de paiement:</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ reservation.jour_payement }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <strong>Statut:</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ reservation.get_statut_display }}
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <strong>Frais:</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            {{ reservation.frais }} MRU
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conditions -->
+                <div class="conditions">
+                    <h4>Conditions:</h4>
+                    <ul class="condition-list">
+                        {% for condition in conditions %}
+                        <li>{{ condition }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Signatures -->
+                <div class="signatures">
+                    <div class="signature">
+                        <strong>Signature du Gérant:</strong><br>
+                        {% if gerant.signature %}
+                        <img src="{{ gerant.signature.url }}" alt="Signature Gérant">
+                        {% else %}
+                        <p>Signature du gérant non disponible.</p>
+                        {% endif %}
+                    </div>
+                    <div class="signature">
+                        <strong>Signature du Locataire:</strong><br>
+                        {% if reservation.signature_locataire %}
+                        <img src="{{ reservation.signature_locataire.url }}" alt="Signature Locataire">
+                        {% else %}
+                        <p>Signature du locataire non disponible.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boutons pour imprimer et annuler -->
+        <div class="buttons no-print">
+            <button onclick="window.print()" class="btn btn-primary">Imprimer</button>
+            <a href="{% url 'locataire-reservation' %}" class="btn btn-danger">Annuler</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

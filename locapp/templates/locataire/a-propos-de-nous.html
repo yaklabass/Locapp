@@ -1,0 +1,64 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+<div class="content-body">
+    <div class="container-fluid">
+    <h1 class="text-center mb-4">À Propos de Nous</h1>
+    
+    <section>
+        <h2>Introduction</h2>
+        <p>Nous sommes un groupe de trois étudiants travaillant sur ce projet de fin d'étude. Notre objectif est de développer une application innovante qui facilite la gestion des réservations et des paiements.</p>
+    </section>
+
+    <section>
+        <h2>L'Équipe</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{% static 'images/lmamy1.jpg' %}" alt="Membre 1" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                <h4>Lmamy</h4>
+                <p>Rôle : Presentation</p>
+                <p>Biographie : Chef d'équipe</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{% static 'images/moulay.jpg' %}" alt="Membre 2" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                <h4>Moulaye Ely</h4>
+                <p>Rôle : Designer</p>
+                <p>Biographie : Chef disigne</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{% static 'images/bouha.jpg' %}" alt="Membre 3" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                <h4>Bouha</h4>
+                <p>Rôle : Backend</p>
+                <p>Biographie : Chef Base de donnée</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Vision et Objectifs</h2>
+        <p>Notre vision est de créer une solution complète pour la gestion des réservations. Nous avons travaillé sur ce projet avec l'objectif de...</p>
+    </section>
+
+    <section>
+        <h2>Technologies Utilisées</h2>
+        <ul>
+            <li>Python</li>
+            <li>Django</li>
+            <li>Bootstrap</li>
+            <!-- Ajoutez d'autres technologies ici -->
+        </ul>
+    </section>
+
+    <section>
+        <h2>Remerciements</h2>
+        <p>Nous remercions nos mentors et enseignants pour leur soutien tout au long de ce projet.</p>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>Pour plus d'informations, veuillez nous contacter à <a href="#">contact@example.com</a>.</p>
+    </section>
+</div>
+</div>
+{% endblock %}

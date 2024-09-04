@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tous les locataires </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'b/images/ico.png'%}">
+    <link rel="stylesheet" href="{%static 'b/vendor/bootstrap-select/dist/css/bootstrap-select.min.css'%}">
+	
+	<!-- Datatable -->
+    <link href="{%static 'b/vendor/datatables/css/jquery.dataTables.min.css'%}" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'b/css/style.css'%}">
+
+</head>
+
+<body>
+
+		<!--Nav header start -->
+		{% include "adm/navheader.html" %}
+
+
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        {% include "adm/sidebar.html" %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+		
+		
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+				    
+				<div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Tous les locataires</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Locataires</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Tous les locataires</a></li>
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="nav nav-pills mb-3">
+							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">Vue en liste</a></li>
+							{% comment %} <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Vue en grille</a></li> {% endcomment %}
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<div class="row tab-content">
+							<div id="list-view" class="tab-pane fade active show col-lg-12">
+								<div class="card">
+									<div class="card-header">
+										<h4 class="card-title">Tous les locataires  </h4>
+										<a href="{%url 'add-locataire'%}" class="btn btn-primary">+ Ajouter nouveau</a>
+									</div>
+									<div class="card-body">
+										<div class="table-responsive">
+											<table id="example3" class="display" style="min-width: 845px">
+												<thead>
+													<tr>
+														
+														<th>ID</th>
+														<th>Nom</th>
+														<th>Prenom</th>
+														<th>Telephone</th>
+														<th>Adresse</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													{% if locataires %}
+
+														{% for locataire in locataires %}
+															<tr>
+																{% comment %} <td><img class="rounded-circle" width="35" src="{%static 'b/images/profile/small/pic1.jpg'%}" alt=""></td> {% endcomment %}
+																<td><strong>{{locataire.id}}</strong></td>
+																<td>{{locataire.nomLOC}}</td>
+																<td>{{locataire.prenomLOC}}</td>
+																<td><a href="javascript:void(0);"><strong>{{locataire.telLOC}}</strong></a></td>
+																<td>{{locataire.adresse}}</td>
+
+																<td>
+																	<a href="{%url 'edit-locataire' locataire.id %}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+																	<a href="{%url 'delete-locataire' locataire.id %}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+																</td>												
+															</tr>      
+														{% endfor %}
+
+													{% endif %}
+							
+												</tbody>
+											</table>
+										</div>
+									</div>
+                                </div>
+                            </div>
+							{% if locataire %}
+								{% for locataire in locataires %}
+								
+								{% endfor %}
+							{% endif %}
+							{% comment %} <div id="grid-view" class="tab-pane fade col-lg-12">
+								<div class="row">
+									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+										<div class="card card-profile">
+											<div class="card-header justify-content-end pb-0">
+												<div class="dropdown">
+													<button class="btn btn-link" type="button" data-toggle="dropdown">
+														<span class="dropdown-dots fs--1"></span>
+													</button>
+													<div class="dropdown-menu dropdown-menu-right border py-0">
+														<div class="py-2">
+															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
+															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="card-body pt-2">
+												<div class="text-center">
+													<div class="profile-photo">
+														<img src="images/profile/small/pic2.jpg" width="100" class="img-fluid rounded-circle" alt="">
+													</div>
+													<h3 class="mt-4 mb-1">Alexander</h3>
+													<p class="text-muted">M.COM., P.H.D.</p>
+													<ul class="list-group mb-3 list-group-flush">
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span>Roll No.</span><strong>02</strong></li>
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+													</ul>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</div> {% endcomment %}
+						</div>
+					</div>
+				</div>
+			   
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+		{% include "adm/footer.html" %}
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+     <!-- Required vendors -->
+	 <script src="{%static 'b/vendor/global/global.min.js'%}"></script>
+	 <script src="{%static 'b/vendor/bootstrap-select/dist/js/bootstrap-select.min.js'%}"></script>
+	 <script src="{%static 'b/js/custom.min.js'%}"></script>
+	 <script src="{%static 'b/js/dlabnav-init.js'%}"></script>	
+	 
+	 <!-- Datatable -->
+	 <script src="{%static 'b/vendor/datatables/js/jquery.dataTables.min.js'%}"></script>
+	 <script src="{%static 'b/js/plugins-init/datatables.init.js'%}"></script>
+	 
+	 <!-- Svganimation scripts -->
+	 <script src="{%static 'b/vendor/svganimation/vivus.min.js'%}"></script>
+	 <script src="{%static 'b/vendor/svganimation/svg.animation.js'%}"></script>
+	 <script src="{%static 'b/js/styleSwitcher.js'%}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+<div class="content-body">
+    <div class="container-fluid">
+        <h2>Détails de la Réservation</h2>
+        <hr>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="card-title">Détails de la Réservation par Jour</h4>
+            </div>
+            <div class="card-body">
+                <div class="reservation-details">
+                    <div class="detail-item">
+                        <strong>Nom de l'appartement :</strong> {{ reservation.appartement.nomAP }}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Date de début :</strong> {{ reservation.date_debut }}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Date de fin :</strong> {{ reservation.date_fin }}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Statut :</strong> {{ reservation.get_statut_display }}
+                    </div>
+                    <div class="detail-item">
+                        <strong>Frais :</strong> {{ reservation.frais }} MRU
+                    </div>
+                    <div class="detail-item">
+                        <strong>Type de paiement :</strong>
+                        <div class="payment-methods">
+                            <a href="#" class="payment-link">Cash</a>
+                            <a href="{% url 'create-payement-bankili' reservation.id %}"><img src="{% static 'images/bankili.png' %}" alt="Bankili" class="payment-logo"></a>
+                            <a href="{% url 'create-payement-bimbank' reservation.id %}"><img src="{% static 'images/bimbank.jpg' %}" alt="Masrivi" class="payment-logo"></a>
+                            <a href="{% url 'create-payement-sedad' reservation.id %}"><img src="{% static 'images/sedad.png' %}" alt="Sedad" class="payment-logo"></a>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'locataire-reservation' %}" class="btn btn-primary mt-3">Retour</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.reservation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.detail-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.payment-link {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+.payment-logo {
+    width: 100px;
+    height: auto;
+}
+.payment-logo:hover, .payment-link:hover {
+    opacity: 0.7;
+}
+</style>
+{% endblock %}

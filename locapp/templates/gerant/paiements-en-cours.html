@@ -1,0 +1,52 @@
+{% extends "gerant/base-index.html" %}
+{% block gerant %}
+<style>
+    .clickable-img {
+        cursor: pointer;
+        transition: transform 0.2s; /* Animation */
+    }
+    
+    .clickable-img:hover {
+        transform: scale(1.1); /* Zoom effect */
+    }-    
+</style>
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Liste des paiements en cours</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            {% for paiement in paiements %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Paiement de la reservation #{{ paiement.reservation.id }}</h5>
+                                        <p><strong>Numéro de téléphone :</strong> {{ paiement.numero_telephone }}</p>
+                                        <p><strong>Numéro de transfert :</strong> {{ paiement.numero_de_transfert }}</p>
+                                        <p><strong>Capture d'écran :</strong></p>
+                                        <div>
+                                            <a href="{{ paiement.capture_ecran.url }}" target="_blank">
+                                                <img src="{{ paiement.capture_ecran.url }}" alt="Capture d'écran" class="img-fluid clickable-img">
+                                            </a>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a href="{% url 'confirmer-paiement' paiement.id %}" class="btn btn-success">Confirmer</a>
+                                            <a href="{% url 'refuser-paiement' paiement.id %}" class="btn btn-danger">Refuser</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

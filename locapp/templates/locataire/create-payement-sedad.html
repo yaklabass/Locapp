@@ -1,0 +1,27 @@
+{% extends "locataire/base-index.html" %}
+{% load static %}
+
+{% block locataire %}
+
+
+
+<div class="content-body">
+    <div class="container-fluid">
+        <h2>Créer un Paiement</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/sedad.png' %}" alt="Sedad Logo" style="width: 100%; height: auto;">
+                <p>Numéro Sedad de l'appartement : {{ appartement.telAP }}</p>
+            </div>
+            <div class="col-md-8">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

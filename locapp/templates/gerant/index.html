@@ -1,0 +1,113 @@
+{% extends "gerant/base-index.html" %}
+{% block gerant %}
+
+<div class="content-body">
+    <div class="container-fluid">
+        
+        <!-- Statistiques générales -->
+        <div class="row">
+            
+            
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-secondary">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="fa fa-building-o"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total appartements</p>
+                                <h3 class="text-white">{{ total_appartements }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-info">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-calendar-check-o"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total réservations</p>
+                                <h3 class="text-white">{{ total_reservations }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-success">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-money"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total revenus</p>
+                                <h3 class="text-white">{{ total_revenue }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-danger">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-bar-chart"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Taux d'occupation</p>
+                                <h3 class="text-white">{{ occupation_rate }}%</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-warning">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-ban"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Total réservations annulées</p>
+                                <h3 class="text-white">{{ total_reservations_annulees }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card bg-success">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="mr-3">
+                                <i class="la la-percent"></i>
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">Taux d'annulation</p>
+                                <h3 class="text-white">{{ taux_annulation }}%</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+               
+    </div>
+</div>
+
+{% endblock %}
